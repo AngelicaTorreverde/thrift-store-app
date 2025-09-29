@@ -22,7 +22,7 @@ class ItemDetailPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFF72585), Color(0xFF3A0CA3)],
+            colors: [Color(0xFF97B3AE), Color(0xFFD2E0D3)], // pastel gradient
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -33,7 +33,7 @@ class ItemDetailPage extends StatelessWidget {
             builder: (context, snap) {
               if (snap.connectionState != ConnectionState.done) {
                 return const Center(
-                  child: CircularProgressIndicator(color: Colors.white),
+                  child: CircularProgressIndicator(color: Color(0xFFF2C3B9)), // pink
                 );
               }
               if (snap.hasError) {
@@ -49,7 +49,7 @@ class ItemDetailPage extends StatelessWidget {
                 return Center(
                   child: Text(
                     'Item not found 🤷',
-                    style: GoogleFonts.poppins(color: Colors.white),
+                    style: GoogleFonts.poppins(color: Color(0xFFF2C3B9)),
                   ),
                 );
               }
@@ -64,8 +64,8 @@ class ItemDetailPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () => Navigator.pop(context),
-                            child:
-                            const Icon(Icons.arrow_back_ios, color: Colors.white),
+                            child: const Icon(Icons.arrow_back_ios,
+                                color: Color(0xFFF2C3B9)), // pink
                           ),
                           const SizedBox(width: 8),
                           Text(
@@ -73,7 +73,7 @@ class ItemDetailPage extends StatelessWidget {
                             style: GoogleFonts.poppins(
                               fontSize: 22,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                              color: Color(0xFFF2C3B9),
                             ),
                           ),
                         ],
@@ -85,8 +85,8 @@ class ItemDetailPage extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                FullScreenImagePage(itemId: item.id, imageUrl: item.imageUrl),
+                            builder: (_) => FullScreenImagePage(
+                                itemId: item.id, imageUrl: item.imageUrl),
                           ),
                         ),
                         child: Hero(
@@ -96,7 +96,7 @@ class ItemDetailPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: const [
                                 BoxShadow(
-                                  color: Colors.black38,
+                                  color: Colors.black26,
                                   blurRadius: 12,
                                   offset: Offset(0, 6),
                                 ),
@@ -120,7 +120,7 @@ class ItemDetailPage extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Color(0xFF97B3AE), // muted green
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -129,7 +129,7 @@ class ItemDetailPage extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
-                          color: Colors.yellowAccent,
+                          color: Color(0xFFF2C3B9), // pink
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -138,7 +138,7 @@ class ItemDetailPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Color(0xFFF0EEEA), // soft neutral
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -149,13 +149,16 @@ class ItemDetailPage extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.deepPurple,
+                                color: Color(0xFF97B3AE), // muted green
                               ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               item.description,
-                              style: GoogleFonts.poppins(fontSize: 14),
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                color: Colors.black87,
+                              ),
                             ),
                           ],
                         ),
@@ -175,7 +178,8 @@ class ItemDetailPage extends StatelessWidget {
                               const SizedBox(width: 8),
                               InfoChip(
                                 icon: Icons.calendar_today,
-                                text: '${item.createdAt.month}/${item.createdAt.day}/${item.createdAt.year}',
+                                text:
+                                '${item.createdAt.month}/${item.createdAt.day}/${item.createdAt.year}',
                               ),
                             ],
                           ),
@@ -191,7 +195,7 @@ class ItemDetailPage extends StatelessWidget {
                     right: 16,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.yellowAccent,
+                        backgroundColor: Color(0xFFF2C3B9), // pastel pink
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -201,7 +205,8 @@ class ItemDetailPage extends StatelessWidget {
                         final email = snap.data!.contactInfo.trim();
                         final subject =
                         Uri.encodeComponent('Inquiry about "${item.title}"');
-                        final uri = Uri.parse('mailto:$email?subject=$subject');
+                        final uri =
+                        Uri.parse('mailto:$email?subject=$subject');
                         try {
                           await launchUrl(uri,
                               mode: LaunchMode.externalApplication);
@@ -217,7 +222,8 @@ class ItemDetailPage extends StatelessWidget {
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
                                   child: Text('Close',
-                                      style: GoogleFonts.poppins()),
+                                      style: GoogleFonts.poppins(
+                                          color: Color(0xFF97B3AE))),
                                 ),
                               ],
                             ),
@@ -229,7 +235,7 @@ class ItemDetailPage extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepPurple,
+                          color: Colors.white, // white text
                         ),
                       ),
                     ),

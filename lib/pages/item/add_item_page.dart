@@ -68,27 +68,29 @@ class AddItemPageState extends State<AddItemPage> {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Color(0xFF7209B7), Color(0xFFFF006E)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: [Color(0xFF97B3AE), Color(0xFFD2E0D3)], // pastel gradient
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         extendBody: true,
-
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
             '✨ Add Your Thrift',
             style: GoogleFonts.poppins(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFFF2C3B9), // pastel pink
+            ),
           ),
           centerTitle: true,
+          iconTheme: const IconThemeData(color: Color(0xFFF2C3B9)), // pink back arrow
         ),
-
         body: SafeArea(
           bottom: false,
           child: SingleChildScrollView(
@@ -96,15 +98,12 @@ class AddItemPageState extends State<AddItemPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Title field
                 CustomInputField(
                   controller: _titleCtrl,
                   label: 'Item Title',
                   icon: Icons.label_outline,
                 ),
                 const SizedBox(height: 16),
-
-                // Description
                 CustomInputField(
                   controller: _descCtrl,
                   label: 'Description',
@@ -112,8 +111,6 @@ class AddItemPageState extends State<AddItemPage> {
                   maxLines: 3,
                 ),
                 const SizedBox(height: 16),
-
-                // Price
                 CustomInputField(
                   controller: _priceCtrl,
                   label: 'Price (Php)',
@@ -121,24 +118,18 @@ class AddItemPageState extends State<AddItemPage> {
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 16),
-
-                // Name
                 CustomInputField(
                   controller: _nameCtrl,
                   label: 'Your Display Name',
                   icon: Icons.person_outline,
                 ),
                 const SizedBox(height: 16),
-
-                // Contact
                 CustomInputField(
                   controller: _contactCtrl,
                   label: 'Contact Email',
                   icon: Icons.contact_mail_outlined,
                 ),
                 const SizedBox(height: 24),
-
-                // Image picker
                 _image == null
                     ? ElevatedButton.icon(
                   icon: const Icon(Icons.photo_library, size: 24),
@@ -147,8 +138,8 @@ class AddItemPageState extends State<AddItemPage> {
                     style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white.withOpacity(0.9),
-                    foregroundColor: Colors.deepPurple,
+                    backgroundColor: Color(0xFFF2C3B9), // pastel pink
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -160,27 +151,25 @@ class AddItemPageState extends State<AddItemPage> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: Image.file(_image!, height: 180, fit: BoxFit.cover),
+                      child: Image.file(_image!,
+                          height: 180, fit: BoxFit.cover),
                     ),
                     const SizedBox(height: 8),
                     TextButton(
                       onPressed: () => setState(() => _image = null),
                       child: Text(
                         'Re-pick Image',
-                        style: GoogleFonts.poppins(color: Colors.white70),
+                        style: GoogleFonts.poppins(color: Colors.black54),
                       ),
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 24),
-
-                // Upload button
                 ElevatedButton(
                   onPressed: canUpload ? _handleUpload : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.deepPurple,
+                    backgroundColor: Color(0xFFF2C3B9), // pastel pink
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
